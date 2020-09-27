@@ -12,7 +12,7 @@ In this lesson, engineers will
 - build a counter component in React
 - understand the problem that React solves
 
-## REVIEW: JavaScript basics
+## LECTURE: JavaScript basics
 
 JavaScript is a programming language that adds dynamic capabilities to a website. Some of the content in this section was adapted from [MDN's JavaScript basics](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/JavaScript_basics).
 
@@ -288,3 +288,8 @@ incrementButton.onclick = () => {
 - What was difficult about creating a counter component in plain JavaScript?
 - What are the things we were responsible of keeping track of?
 
+## LECTURE: Introducing React
+
+We have a rough idea of how to create a web application using plain JavaScript. However, we can see that it is cumbersome to track internal state and what the user sees. We also have to come up with our own strategies for making DOM updates efficient.
+
+React solves these problems for us. As long as we do things the "React way", React will make updates to the DOM for us in an efficient manner. All we have to do is manage the app state according to our specifications.
