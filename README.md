@@ -308,7 +308,7 @@ First, let's mark the element that will contain our React application using the 
 _public/index.html_
 
 ```html
-<div id="app"></div>
+<div id="react-app"></div>
 ```
 
 Then, let's make a simple React component.
@@ -327,8 +327,92 @@ _index.js_
 ```js
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App'; // you don't need the .js extension
+import App from './App';
 
-ReactDOM.render(<App />, document.getElementById('app'));
+ReactDOM.render(<App />, document.getElementById('react-app'));
 ```
 
+If done correctly, you should see  "Hello, from the App!" rendered in the DOM.
+
+### Reflection
+
+- What does it mean to boostrap a React app?
+- Can you have other HTML elements next to a React app?
+- What would happen if we didn't call `ReactDOM.render`?
+
+## YOUR TURN: React Counter component
+
+Now that we know how to boostrap a React app, let's see how easier it would be to create a counter component using React.
+
+First, create a `Counter` component.
+
+_src/Counter.js_
+
+```jsx
+import React from 'react';
+
+export const Counter = () => {
+  return <div>count:</div>
+}
+```
+
+Then, import it in the App component and render it.
+
+_src/App.js_
+
+```jsx
+import { Counter } from './Counter';
+
+export const App = () => <Counter />;
+```
+
+The reason why we do this is to separate the concerns of the App component and the Counter component. Our App component orchestrates the layout of our top-level components and does some initialization. Our Counter component keeps track of a count variable.
+
+React provides a hook called `useState`, which is React's mechanism for tracking state. You give it an initial value, and it'll give you a reference to the state, and a way to update it.
+
+_src/Counter.js_
+
+```jsx
+import React, { useState } from 'react';
+
+export const Counter = () => {
+  const [count, setCount] = useState(0);
+  return <div>count: {count}</div>
+}
+```
+
+Notice the special curly braces `{}` syntax _inside the JSX template_. You can put JavaScript expressions in these curly braces, and they will be injected into the template.
+
+If done correctly, you should see "count: 0". What happens if you call `useState(123)`? Before you try this, think of your answer first.
+
+`useState` also gave us a `setCount` function. We must use this function to update the state, or React won't know about it.
+
+Let's add an increment button and use `setCount` in the button's `onClick` prop.
+
+```jsx
+import React, { useState } from 'react';
+
+export const Counter = () => {
+  const [count, setCount] = useState(0);
+  const increment = () => setCount(count + 1);
+  return (
+    <div>
+      <div>count: {count}</div>
+      <div>
+        <button onClick={increment}>
+          increment
+        </button>
+      </div>
+    </div>
+  );
+}
+```
+
+Does it work as expected?
+
+Finally, create a decrement button and install a click handler on it.
+
+### Reflection
+
+- Why do we have to use `React.useState`?
+- What does React do under-the-hood for us?
