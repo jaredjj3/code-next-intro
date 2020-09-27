@@ -7,10 +7,12 @@ This is a lesson for the [Code Next](https://codenext.withgoogle.com/) React clu
 In this lesson, engineers will
 
 - learn JavaScript basics
+- build a counter component in plain JavaScript
 - learn how to bootstrap a React app
+- build a counter component in React
 - understand the problem that React solves
 
-## JavaScript basics
+## REVIEW: JavaScript basics
 
 JavaScript is a programming language that adds dynamic capabilities to a website. Some of the content in this section was adapted from [MDN's JavaScript basics](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/JavaScript_basics).
 
@@ -221,4 +223,62 @@ const objects = [
 ];
 const fooBarObject = objects.find((obj) => obj.foo === 'bar');
 console.log(fooBarObject); // { foo: 'bar' }
+```
+
+## YOUR TURN: Counter component 
+
+Create a counter component in plain JavaScript. A counter is composed of 3 behaviors:
+
+- A display that shows the user what the `count` is at. The `count` should be initialized at 0. 
+- A decrement button that subtracts 1 from the current `count` and updates the display.
+- An increment button that adds 1 to the current `count` and updates the display.
+
+Ultimately, it will look like this:
+
+<div>
+  <div>count: 0</div>
+  <div>
+    <button>increment</button>
+    <button>decrement</button>
+  </div>
+</div>
+
+<hr/>
+
+### Helpful Patterns
+
+#### Setting Inner Text of Element
+
+```html
+<div>
+  count: <span id="count">0</span>
+</div>
+```
+
+```js
+// get the element that has [id="count"]
+const countSpan = document.getElementById('count');
+
+// updates the inner text immediately
+countSpan.innerText = 42;
+```
+
+#### Adding an Event Listener
+
+```html
+<button id="increment">increment</button>
+```
+
+```js
+// declare a mutable variable called `count` and initialize it to 0
+let count = 0;
+
+// get the element that has [id="increment"]
+const incrementButton = document.getElementById('increment');
+
+// when the button is clicked, invoke a function that increments count
+incrementButton.onclick = () => {
+  count++
+  // you'll need to do something else to update the count display
+}
 ```
