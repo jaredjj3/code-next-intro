@@ -282,3 +282,9 @@ incrementButton.onclick = () => {
   // you'll need to do something else to update the count display
 }
 ```
+
+### Reflection
+
+- What was difficult about creating a counter component in plain JavaScript?
+- What are the things we were responsible of keeping track of?
+
