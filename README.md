@@ -249,12 +249,15 @@ Ultimately, it will look like this:
 
 #### Setting Inner Text of Element
 
+_html_
+
 ```html
 <div>
   count: <span id="count">0</span>
 </div>
 ```
 
+_js_
 ```js
 // get the element that has [id="count"]
 const countSpan = document.getElementById('count');
@@ -265,10 +268,12 @@ countSpan.innerText = 42;
 
 #### Adding an Event Listener
 
+_html_
 ```html
 <button id="increment">increment</button>
 ```
 
+_js_
 ```js
 // declare a mutable variable called `count` and initialize it to 0
 let count = 0;
@@ -293,3 +298,37 @@ incrementButton.onclick = () => {
 We have a rough idea of how to create a web application using plain JavaScript. However, we can see that it is cumbersome to track internal state and what the user sees. We also have to come up with our own strategies for making DOM updates efficient.
 
 React solves these problems for us. As long as we do things the "React way", React will make updates to the DOM for us in an efficient manner. All we have to do is manage the app state according to our specifications.
+
+## YOUR TURN: Bootstrapping a React App
+
+Boostrapping refers to the way our React App will start. It should not require the user to activate it - our code should do the activation / initialization.
+
+First, let's mark the element that will contain our React application using the id attribute.
+
+_public/index.html_
+
+```html
+<div id="app"></div>
+```
+
+Then, let's make a simple React component.
+
+_src/App.js_
+
+```jsx
+import React from 'react';
+
+export const App = () => <div>Hello, from the App!</div>
+```
+
+Next, let's import the App and React stuff that will help us bootstrap the app.
+
+_index.js_
+```js
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App'; // you don't need the .js extension
+
+ReactDOM.render(<App />, document.getElementById('app'));
+```
+
