@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-export const HookCounter = () => {
+export const Counter = () => {
   const [count, setCount] = useState(0);
 
   const increment = () => setCount(count + 1);
